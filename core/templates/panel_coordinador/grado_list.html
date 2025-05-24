@@ -1,0 +1,37 @@
+{% extends "panel_coordinador/panel_base.html" %}
+
+{% block panel_content %}
+  <h1 class="mb-4">🎓 Lista de Grados</h1>
+
+  <!-- Enlace para crear un nuevo grado -->
+  <a href="{% url 'crear_grado' %}" class="btn btn-primary mb-4">Nuevo Grado</a>
+
+  <!-- Tabla con efecto vidrio para mostrar todos los grados -->
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>NOMBRE DEL GRADO</th>
+          <th>ACCIONES</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for grado in grados %}
+          <tr>
+            <td>{{ grado.nombre }}</td>
+            <td>
+              <!-- Enlaces para editar y eliminar -->
+              <a href="{% url 'editar_grado' grado.id %}" class="text-decoration-none text-primary me-2">Editar</a>
+              |
+              <a href="{% url 'eliminar_grado' grado.id %}" class="text-decoration-none text-danger ms-2">Eliminar</a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="2" class="text-center py-4 text-muted">No hay grados registrados.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "panel_coordinador/panel_base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}Nueva Asignatura{% endblock %}
+
+{% block panel_content %}
+<div class="d-flex justify-content-center">
+  <div class="col-md-6 col-lg-4">
+    <div class="card shadow">
+      <div class="card-body">
+        <h2 class="card-title h5 fw-bold text-primary d-flex align-items-center mb-4">
+          📘 Nueva Asignatura
+        </h2>
+
+        <form method="post">
+          {% csrf_token %}
+
+          <div class="mb-3">
+            <label for="id_nombre" class="form-label fw-semibold">Nombre</label>
+            {{ form.nombre|add_class:"form-control" }}
+          </div>
+
+          <div class="mb-3">
+            <label for="id_grado" class="form-label fw-semibold">Grado</label>
+            {{ form.grado|add_class:"form-select" }}
+          </div>
+
+          <div class="mb-3">
+            <label for="id_area" class="form-label fw-semibold">Área</label>
+            {{ form.area|add_class:"form-select" }}
+          </div>
+
+          <div class="d-flex gap-2 mt-4">
+            <button type="submit" class="btn btn-success">
+              💾 Guardar
+            </button>
+            <a href="{% url 'lista_asignaturas' %}" class="btn btn-secondary">
+              ❌ Cancelar
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

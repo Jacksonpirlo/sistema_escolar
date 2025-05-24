@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <!-- Botón de regreso -->
+  <div class="mb-4">
+    <a href="{% url 'panel_coordinador' %}" class="btn btn-primary">
+      ⬅️ Regresar al Panel
+    </a>
+  </div>
+
+  <!-- Contenido específico de cada vista -->
+  {% block panel_content %}{% endblock %}
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "panel_coordinador/panel_base.html" %}
+{% load widget_tweaks %}
+
+{% block panel_content %}
+<div class="d-flex justify-content-center">
+  <div class="col-lg-6 col-md-8 col-sm-10">
+    <div class="card shadow">
+      <div class="card-body">
+        <!-- Título -->
+        <h2 class="card-title h4 fw-bold mb-4 text-primary d-flex align-items-center">
+          🎓 Nuevo Grupo
+        </h2>
+
+        <form method="post">
+          {% csrf_token %}
+          
+          <!-- Campo: Nombre del Grupo -->
+          <div class="mb-3">
+            <label for="{{ form.nombre.id_for_label }}" class="form-label">Nombre del Grupo</label>
+            {{ form.nombre|add_class:"form-control" }}
+            {% if form.nombre.errors %}
+              <div class="text-danger small mt-1">{{ form.nombre.errors.0 }}</div>
+            {% endif %}
+          </div>
+
+          <!-- Campo: Grado -->
+          <div class="mb-3">
+            <label for="{{ form.grado.id_for_label }}" class="form-label">Grado</label>
+            {{ form.grado|add_class:"form-select" }}
+            {% if form.grado.errors %}
+              <div class="text-danger small mt-1">{{ form.grado.errors.0 }}</div>
+            {% endif %}
+          </div>
+
+          <!-- Campo: Aula -->
+          <div class="mb-3">
+            <label for="{{ form.aula.id_for_label }}" class="form-label">Aula</label>
+            {{ form.aula|add_class:"form-select" }}
+            {% if form.aula.errors %}
+              <div class="text-danger small mt-1">{{ form.aula.errors.0 }}</div>
+            {% endif %}
+          </div>
+
+          <!-- Botones -->
+          <div class="d-flex gap-2 mt-4">
+            <button type="submit" class="btn btn-success">
+              💾 Guardar
+            </button>
+            <a href="{% url 'lista_grupos' %}" class="btn btn-secondary">
+              ❌ Cancelar
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

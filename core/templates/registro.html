@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Registro de Usuario | Sistema Escolar{% endblock %}
+
+{% block body_class %}auth-page{% endblock %}
+{% block container_class %}transparent-bg{% endblock %}
+
+{% block full_content %}
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <div class="glass-effect auth-container">
+    <h1 class="h4 text-center mb-4 text-light">Registro de Usuario</h1>
+
+    {% if messages %}
+    <div class="mb-3">
+      {% for message in messages %}
+        <div class="alert {% if message.tags == 'error' %}glass-alert glass-alert-danger{% else %}glass-alert glass-alert-success{% endif %} py-1 px-2 small" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <form method="post" novalidate>
+      {% csrf_token %}
+
+      <div class="mb-3">
+        <label for="{{ form.correo.id_for_label }}" class="form-label text-light">Correo Electrónico:</label>
+        {{ form.correo|add_class:"form-control glass-input" }}
+        {% if form.correo.errors %}
+        <div class="invalid-feedback d-block text-light">
+          {% for error in form.correo.errors %}{{ error }}{% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ form.rol.id_for_label }}" class="form-label text-light">Rol:</label>
+        {{ form.rol|add_class:"form-select"|attr:"style:background-color: rgba(255, 255, 255, 0.1) !important; color: white !important;" }}
+        {% if form.rol.errors %}
+        <div class="invalid-feedback d-block text-light">
+          {% for error in form.rol.errors %}{{ error }}{% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ form.password.id_for_label }}" class="form-label text-light">Contraseña:</label>
+        {{ form.password|add_class:"form-control glass-input" }}
+        {% if form.password.errors %}
+        <div class="invalid-feedback d-block text-light">
+          {% for error in form.password.errors %}{{ error }}{% endfor %}
+        </div>
+        {% endif %}
+        <div class="form-text text-light opacity-75">{{ form.password.help_text }}</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ form.confirmar_password.id_for_label }}" class="form-label text-light">Confirmar Contraseña:</label>
+        {{ form.confirmar_password|add_class:"form-control glass-input" }}
+        {% if form.confirmar_password.errors %}
+        <div class="invalid-feedback d-block text-light">
+          {% for error in form.confirmar_password.errors %}{{ error }}{% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+      
+      <div class="text-center mt-3">
+        <a href="{% url 'login' %}" class="link-light">¿Ya tienes cuenta? Inicia sesión</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

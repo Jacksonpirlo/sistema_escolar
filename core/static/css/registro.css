@@ -1,0 +1,166 @@
+/* Asegura altura completa para fondo */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Reset básico y fuente */
+body {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+}
+
+/* Fondo con imagen y degradado */
+.form-container {
+  height: 100vh;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('../img/registro_login.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.1rem;
+}
+
+/* Caja translúcida para el formulario */
+.form {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 400px;
+  transition: all 0.3s ease-in-out;
+  color: white;
+}
+
+.form:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.89);
+}
+
+/* Estilo para los campos de formulario */
+.form-control,
+.form-select {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Placeholder text color */
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Estilo para las opciones del select - ajustado para mayor especificidad */
+.form-select option {
+  background-color: #2c3e50 !important;
+  color: white !important;
+}
+
+/* Asegura que las opciones no se vean afectadas por otros estilos */
+select.form-select {
+  color-scheme: dark !important; /* Ayuda en algunos navegadores */
+}
+
+/* Texto de ayuda */
+.form-text {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Botón personalizado */
+.btn-custom {
+  background-color: #0d6efd; /* color primario Bootstrap */
+  color: #ffffff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #2c3e50;
+}
+
+/* Estilos para mensajes de alerta */
+.alert {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.alert-danger {
+  background-color: rgba(220, 53, 69, 0.3) !important;
+  border-color: rgba(220, 53, 69, 0.4) !important;
+}
+
+.alert-success {
+  background-color: rgba(25, 135, 84, 0.3) !important;
+  border-color: rgba(25, 135, 84, 0.4) !important;
+}
+
+/* Estilos específicos para contenedores de autenticación */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.auth-container {
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Inputs con efecto de cristal */
+.glass-input {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+
+/* Fix específico para select en formularios de autenticación */
+.glass-input.form-select option,
+.form-select.glass-input option {
+  background-color: #2c3e50 !important;
+  color: white !important;
+}
+
+/* Alerta con efecto de cristal */
+.glass-alert {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.glass-alert-danger {
+  background-color: rgba(220, 53, 69, 0.3);
+  border-color: rgba(220, 53, 69, 0.4);
+}
+
+.glass-alert-success {
+  background-color: rgba(25, 135, 84, 0.3);
+  border-color: rgba(25, 135, 84, 0.4);
+}

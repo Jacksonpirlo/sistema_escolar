@@ -1,0 +1,76 @@
+{% extends 'panel_coordinador/panel_base.html' %}
+
+{% block panel_content %}
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow">
+        <div class="card-body">
+          <h2 class="h4 mb-4 text-primary fw-bold">👤 Perfil de Usuario</h2>
+
+          {% if perfil.foto %}
+            <div class="text-center mb-4">
+              <img 
+                src="{{ perfil.foto.url }}" 
+                alt="Foto de perfil" 
+                class="img-fluid rounded shadow border"
+                style="max-width: 300px;"
+              >
+            </div>
+          {% endif %}
+
+          <div class="border-bottom mb-3 pb-2">
+            <strong>Correo:</strong> {{ usuario.correo }}
+          </div>
+          <div class="border-bottom mb-3 pb-2">
+            <strong>Rol:</strong> {{ usuario.rol.nombre }}
+          </div>
+          <div class="border-bottom mb-3 pb-2">
+            <strong>Fecha de creación:</strong> {{ usuario.fecha_creacion|date:"j \\d\\e F \\d\\e Y, g:i a" }}
+          </div>
+
+          {% if perfil %}
+            <div class="border-bottom mb-3 pb-2">
+              <strong>Primer nombre:</strong> {{ perfil.primer_nombre }}
+            </div>
+            <div class="border-bottom mb-3 pb-2">
+              <strong>Segundo nombre:</strong> {{ perfil.segundo_nombre }}
+            </div>
+            <div class="border-bottom mb-3 pb-2">
+              <strong>Primer apellido:</strong> {{ perfil.primer_apellido }}
+            </div>
+            <div class="border-bottom mb-3 pb-2">
+              <strong>Segundo apellido:</strong> {{ perfil.segundo_apellido }}
+            </div>
+            <div class="border-bottom mb-3 pb-2">
+              <strong>Tipo de documento:</strong> {{ perfil.tipo_documento }}
+            </div>
+            <div class="border-bottom mb-3 pb-2">
+              <strong>Número de documento:</strong> {{ perfil.numero_documento }}
+            </div>
+            <div class="border-bottom mb-3 pb-2">
+              <strong>Dirección línea 1:</strong> {{ perfil.direccion_linea1 }}
+            </div>
+            <div class="border-bottom mb-3 pb-2">
+              <strong>Dirección línea 2:</strong> {{ perfil.direccion_linea2 }}
+            </div>
+            <div class="border-bottom mb-3 pb-2">
+              <strong>Ciudad:</strong> {{ perfil.ciudad }}
+            </div>
+          {% else %}
+            <div class="alert alert-warning mb-3" role="alert">
+              ❗ Este usuario no tiene un perfil creado.
+            </div>
+          {% endif %}
+
+          <div class="mt-4">
+            <a href="{% url 'editar_perfil' %}" class="btn btn-primary">
+              ✏️ Editar Perfil
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

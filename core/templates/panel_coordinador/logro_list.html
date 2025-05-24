@@ -1,0 +1,37 @@
+{% extends "panel_coordinador/panel_base.html" %}
+
+{% block panel_content %}
+  <h1 class="mb-4">🏆 Lista de Logros</h1>
+  
+  <a href="{% url 'crear_logro' %}" class="btn btn-primary mb-4">Nuevo Logro</a>
+  
+  <!-- Tabla con efecto vidrio para mostrar todos los logros -->
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>DESCRIPCIÓN</th>
+          <th>ASIGNATURA</th>
+          <th>ACCIONES</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for logro in logros %}
+          <tr>
+            <td>{{ logro.descripcion }}</td>
+            <td>{{ logro.asignatura.nombre }}</td>
+            <td>
+              <a href="{% url 'editar_logro' logro.pk %}" class="text-decoration-none text-primary me-2">Editar</a>
+              |
+              <a href="{% url 'eliminar_logro' logro.pk %}" class="text-decoration-none text-danger ms-2">Eliminar</a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="3" class="text-center py-4 text-muted">No hay logros registrados.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "panel_coordinador/panel_base.html" %}
+
+{% block panel_content %}
+  <h1 class="mb-4">🧠 Lista de Áreas</h1>
+
+  <!-- Enlace para crear una nueva área -->
+  <a href="{% url 'crear_area' %}" class="btn btn-primary mb-3">Nueva Área</a>
+
+  <!-- Tabla con efecto vidrio para listar las áreas -->
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>NOMBRE DEL ÁREA</th>
+          <th>ACCIONES</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for area in areas %}
+          <tr>
+            <td>{{ area.nombre }}</td>
+            <td>
+              <a href="{% url 'editar_area' area.id %}" class="text-decoration-none text-primary me-2">Editar</a>
+              |
+              <a href="{% url 'eliminar_area' area.id %}" class="text-decoration-none text-danger ms-2">Eliminar</a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="2" class="text-center py-4 text-muted">No hay áreas registradas.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

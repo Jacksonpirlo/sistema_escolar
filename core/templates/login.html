@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Iniciar Sesión | Sistema Escolar{% endblock %}
+
+{% block body_class %}auth-page{% endblock %}
+{% block container_class %}transparent-bg{% endblock %}
+
+{% block full_content %}
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <!-- Mantener el contenedor con efecto de vidrio -->
+  <div class="glass-effect auth-container">
+    <form method="post">
+      <h2 class="h4 text-center mb-4 text-light">Iniciar Sesión</h2>
+      {% csrf_token %}
+
+      {% if error %}
+        <div class="alert glass-alert glass-alert-danger mb-3" role="alert">
+          {{ error }}
+        </div>
+      {% endif %}
+
+      <div class="mb-3">
+        <label for="id_correo" class="form-label text-light">Correo electrónico:</label>
+        {{ form.correo|add_class:"form-control glass-input" }}
+      </div>
+
+      <div class="mb-3">
+        <label for="id_password" class="form-label text-light">Contraseña:</label>
+        {{ form.password|add_class:"form-control glass-input" }}
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Entrar</button>
+      
+      <div class="text-center mt-3">
+        <a href="{% url 'registro' %}" class="link-light">¿No tienes cuenta? Regístrate</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
