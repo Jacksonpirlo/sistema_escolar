@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Sistema Escolar{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+  <!-- Css local -->
+   <link rel="stylesheet" href="../static/css/nabar.css">
+   <link rel="stylesheet" href="../static/css/login.css">
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="flex flex-col min-h-screen bg-gray-100 text-gray-800">
+
+  <!-- NAVBAR -->
+  <header class="bg-white shadow z-10">
+    {% include "includes/navbar.html" %}
+  </header>
+
+  <!-- ZONA PRINCIPAL: ASIDE + CONTENIDO -->
+  <div class="flex flex-1 overflow-hidden">
+
+    <!-- BLOQUE ASIDE -->
+    {% block aside %}
+    {% endblock %}
+
+    <!-- BLOQUE CONTENIDO -->
+    <main class="flex-1 p-6 overflow-y-auto">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t py-4 text-center text-sm text-gray-500">
+    © 2025 Sistema Escolar. Todos los derechos reservados. | Contacto: colegio@example.edu.co
+  </footer>
+  <script src="{% static 'js/ubicacion_encadenada.js' %}"></script>
+
+</body>
+</html>

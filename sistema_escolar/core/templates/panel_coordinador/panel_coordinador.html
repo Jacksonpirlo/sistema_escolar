@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Panel del Coordinador Académico{% endblock %}
+
+{% block panel_content %}
+  <div class="text-center mt-10">
+    <h2 class="text-3xl font-bold text-blue-800">👋 Bienvenido, {{ user.perfil.primer_nombre }}</h2>
+    <p class="mt-2 text-gray-600">Usa el menú lateral para gestionar el sistema escolar.</p>
+  </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "panel_coordinador/dashboard_base.html" %}
+
+{% block title %}Lista de Asignaturas{% endblock %}
+
+{% block panel_content %}
+<div class="bg-white p-6 rounded shadow w-full">
+  <h2 class="text-2xl font-bold text-blue-800 mb-4 flex items-center gap-2">
+    📘 Asignaturas Académicas
+  </h2>
+
+  <a
+    href="{% url 'crear_asignatura' %}"
+    class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 transition mb-4 inline-block"
+  >
+    + Nueva Asignatura
+  </a>
+
+  <table class="mt-4 w-full border border-gray-300">
+    <thead class="bg-gray-200">
+      <tr>
+        <th class="py-2 px-4 text-left">Nombre</th>
+        <th class="py-2 px-4 text-left">Grado</th>
+        <th class="py-2 px-4 text-left">Área</th>
+        <th class="py-2 px-4 text-left">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for asignatura in asignaturas %}
+      <tr class="border-t hover:bg-gray-50">
+        <td class="py-2 px-4">{{ asignatura.nombre }}</td>
+        <td class="py-2 px-4">{{ asignatura.grado.nombre }}</td>
+        <td class="py-2 px-4">{{ asignatura.area.nombre }}</td>
+        <td class="py-2 px-4">
+          <a href="{% url 'editar_asignatura' asignatura.id %}" class="text-blue-600 hover:underline">Editar</a> |
+          <a href="{% url 'eliminar_asignatura' asignatura.id %}" class="text-red-600 hover:underline" onclick="return confirm('¿Deseas eliminar esta asignatura?');">Eliminar</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4" class="py-4 px-4 text-center text-gray-500">No hay asignaturas registradas.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
